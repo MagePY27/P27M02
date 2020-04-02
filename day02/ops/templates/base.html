@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head><title>⾃动化运维平台</title>
+    <style type="text/css">
+table, td, th
+  {
+  border:1px solid green;
+  }
+td
+  {
+  text-align:right;
+  }
+
+th
+  {
+  background-color:green;
+  color:white;
+
+  }
+form {
+    display: inline;
+    }
+
+    </style>
+</head> <body>
+<!-- 每个⻚⾯都有个标题且样式基本不会变，可以抽象出来。变的标题内容做成变量 -->
+<p style="background-color:yellow;">
+ {% block title %} 机器列表 {% endblock %}
+</p>
+<!-- ⻚⾯都内容往往是变化的这⼀块，做成变量即可 -->
+ {% block content %}
+ {% endblock %}
+<!-- 每个⻚⾯都有个底部且样式基本不会变，可以抽象出来 -->
+<!--<p style="background-color:red;"> </p>-->
+</body>
+</html>

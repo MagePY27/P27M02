@@ -1,0 +1,19 @@
+<!-- 继承⺟版不变的部分 -->
+{% extends "base.html" %}
+<!-- 重写⺟版变的部分-->
+{% block title %} 更新表单  {% endblock %}
+<!-- 重写⺟版变的部分-->
+{% block content %}
+    <form method="POST">
+    ip:<br>
+    <input type="text" name="ip" value="{{ Asset.ip }}">
+    <br>
+    hostname:<br>
+    <input type="text" name="hostname" value="{{ Asset.hostname }}">
+    <br><br>
+    <input type="submit" value="提交">
+    </form>
+    <form action="/hello/">
+     <input type="submit" value="取消">
+    </form>
+{% endblock %}

@@ -1,0 +1,38 @@
+<!-- 继承⺟版不变的部分 -->
+{% extends "base.html" %}
+<!-- 重写⺟版变的部分-->
+{% block title %} 机器列表 {% endblock %}
+<!-- 重写⺟版变的部分-->
+{% block content %}
+    <div>
+         <form method="get" action="asset/add/">
+             <input type="submit" value="新增">
+          </form>
+     </div>
+<table border="1" >
+    <thead>
+    <tr>
+        <th>主机名</th>
+        <th>ip</th>
+        <th>动作</th>
+
+    </tr>
+    </thead>
+    <tbody>
+{% for asset in Asset %}
+    <tr>
+    <td>{{ asset.hostname }}</td>
+    <td>{{ asset.ip }}</td>
+    <td>
+        <form method="get" action="asset/{{asset.id}}/update/">
+            <input type="submit" value="更新">
+        </form>
+        <form method="post" action="asset/{{asset.id}}/delete/">
+            <input type="submit" value="删除">
+        </form>
+    </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% endblock %}
