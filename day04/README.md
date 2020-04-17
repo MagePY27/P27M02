@@ -3,7 +3,22 @@
 >urls.py  没变
 
 >form.py
->重写Ad和Update类
+```python
+class UserForm(forms.Form):
+    name = forms.CharField(max_length=20,required=True)
+    password = forms.CharField(max_length=32,required=True)
+
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        print(password.split())
+        num_password = len(password)
+        print('num_password:{}'.format(num_password))
+        if num_password < 4:
+            print('33334444')
+            raise forms.ValidationError('password not enough words!')
+        return password
+```
+>重写Add和Update类
 ```python
 
 class UserAdd(TemplateView):
@@ -62,13 +77,13 @@ class UserUpdate(TemplateView):
 >实现效果
 ##### Add
 密码不足4位
-![d06db1dd9c49e6d482d1bbde147c23f4.png](evernotecid://794DC394-E48C-47E4-8923-43310E651B6A/appyinxiangcom/24081504/ENResource/p80)
+![d06db1dd9c49e6d482d1bbde147c23f4](day4.resources/9D3E5FC1-4722-43AA-B97D-050AA6D241CE.png)
 
 ##### Update
 密码不足4位
-![3a304d1d15dc7a2115e1126880cf189b.png](evernotecid://794DC394-E48C-47E4-8923-43310E651B6A/appyinxiangcom/24081504/ENResource/p86)
+![3a304d1d15dc7a2115e1126880cf189b](day4.resources/43A3D404-88AD-48D8-8AB0-7D31010EEBA6.png)
 
-![e2d5c2223849b6105f92463690caef2b.png](evernotecid://794DC394-E48C-47E4-8923-43310E651B6A/appyinxiangcom/24081504/ENResource/p85)
+![e2d5c2223849b6105f92463690caef2b](day4.resources/C6441D4C-35C3-48A9-93B7-0F3DD0F54523.png)
 
 
 
